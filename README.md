@@ -69,3 +69,6 @@ The following shows a successful transfer between server and client (no server f
 <br/>
 #### client.py:
 ![output](/output/simple_transfer%20(client%20side).JPG)
+
+### Server failure handling:
+Kindly check out ![this folder](/output) for server failure handling
