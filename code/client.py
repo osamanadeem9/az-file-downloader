@@ -4,9 +4,9 @@ import os
 import sys
 import time
 
-def client(port, start, size, output_file, interval, index, global_socket):
+def client(host, port, start, size, output_file, interval, index, global_socket):
     s = socket.socket()             # Create a socket object
-    host = socket.gethostname()     # Get local machine name
+    # host = socket.gethostname()     # Get local machine name
     # port = 60000                    # Reserve a port for your service.
 
     s.connect((host, port))
@@ -95,7 +95,7 @@ while (data!="Done"):
             size = int(size/len(ports))
 
             # print ("Start: "+str(i*size))
-            threading.Thread(target = client,args=(port, i*size, size, filename, interval, i, conn)).start()
+            threading.Thread(target = client,args=(host, port, i*size, size, filename, interval, i, conn)).start()
     data = conn.recv(1024).decode()
     print(data)
     if (data.find("Server")>-1):
@@ -106,7 +106,7 @@ while (data!="Done"):
         new_size = int(data.split(' ')[5])
         for i,port in enumerate(ports):
             print ("Client ",str(port)," waiting for connection again")
-            threading.Thread(target = client,args=(port, start+transferred+(i*new_size), new_size, filename, interval, i, conn)).start()        
+            threading.Thread(target = client,args=(host, port, start+transferred+(i*new_size), new_size, filename, interval, i, conn)).start()        
 
     data = "Done"
 print ("\n\nFile transferred successfully!")
