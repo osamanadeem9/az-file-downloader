@@ -1,4 +1,4 @@
-# File downloader over local servers
+# AZ File Downloader
 
 This is a project for my Computer Networks class. The task to build a file downloader which downloads a large size from multiple servers at the same time, and each server possesses a separate copy of that file. All the servers then simultaneously send their due portion of the file to the client.
 
